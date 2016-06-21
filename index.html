@@ -16,7 +16,13 @@
     </div>
 
     <div class="container">
-        <ul id="tasklist"></ul>
+        <ul class="list-group tasklist" id="tasklist"></ul>
+        <form class="tasklist __addNew">
+            <input type="text" placeholder="title" name="title">
+            <input type="text" placeholder="description" name="description">
+            <input type="hidden" name="type" value="task">
+            <input type="submit">
+        </form>
     </div>
 
     <footer>

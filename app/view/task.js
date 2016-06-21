@@ -7,7 +7,10 @@ define(function () {
     return {
         show: function(task) {
             var container = $(document).find('#tasklist');
-            var content = $('<li></li>').data('id', task.id).text(task.title + ': ' + task.description);
+            var content = $('<li></li>')
+                .data('id', task.id)
+                .text(task.title + ': ' + task.description)
+                .addClass("list-group-item");
             content.appendTo(container);
         }
     }

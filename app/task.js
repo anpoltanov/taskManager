@@ -2,10 +2,6 @@
  * Created by Andrey on 21.06.2016.
  */
 define(["require", "./view/task"], function(require) {
-    var id;
-    var title;
-    var description;
-    var done;
     var view = require('./view/task');
 
     return {
@@ -20,15 +16,17 @@ define(["require", "./view/task"], function(require) {
             });
         },
 
-        parse: function(task) {
-            id = task.id;
-            title = task.title;
-            description = task.description;
-            done = task.done;
-        },
-
         setView: function(viewSrc) {
             view = require('./view/' + viewSrc);
+        },
+
+        getFormData: function(event) {
+            var task = {};
+            var data = $(event.target).serializeArray();
+            data.forEach(function(item) {
+                task[item.name] = item.value;
+            });
+            return task;
         }
     };
 });
