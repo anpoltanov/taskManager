@@ -17,6 +17,10 @@ define(["require", "storageFactory"], function(require) {
         save: function(entity) {
             entity.type = 'task';
             provider.save(entity);
+        },
+
+        remove: function(entity) {
+            provider.remove(entity);
         }
     }
 });

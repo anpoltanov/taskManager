@@ -5,28 +5,27 @@
     <title>Task Manager</title>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/bootstrap-theme.css" />
 </head>
 <body>
     <div class="navbar navbar-default" role="navigation">
         <div class="container">
-            <ul class="nav navbar-nav">
-            </ul>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Task Manager</a>
+            </div>
         </div>
     </div>
 
     <div class="container">
+        <h3>Tasklist</h3>
         <ul class="list-group tasklist" id="tasklist"></ul>
-        <form class="tasklist __addNew">
-            <input type="text" placeholder="title" name="title">
-            <input type="text" placeholder="description" name="description">
-            <input type="hidden" name="type" value="task">
-            <input type="submit">
-        </form>
+        <h3>Add new task</h3>
+        <form class="tasklist __addNew"></form>
     </div>
 
     <footer>
-        <div class="container text-center">anpoltanov. 2016</div>
+        <div class="container text-center">anpoltanov 2016</div>
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

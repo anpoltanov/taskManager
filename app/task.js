@@ -9,6 +9,10 @@ define(["require", "./view/task"], function(require) {
             view.show(task);
         },
 
+        showAddForm: function() {
+            $(document).find('form.tasklist.__addNew').append(view.getFormContent({}));
+        },
+
         showAll: function(tasks) {
             var self = this;
             tasks.forEach(function(item, i, arr) {
@@ -21,8 +25,13 @@ define(["require", "./view/task"], function(require) {
         },
 
         getFormData: function(event) {
+            debugger;
             var task = {};
-            var data = $(event.target).serializeArray();
+            var form = $(event.target).closest('form');
+            if (form.length == 0) {
+                form = $(event.target).siblings('form');
+            }
+            var data = form.serializeArray();
             data.forEach(function(item) {
                 task[item.name] = item.value;
             });

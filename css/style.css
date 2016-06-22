@@ -1,0 +1,23 @@
+.__loading:before {
+    content:"";
+    display:block;
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    background:url(/img/loading.gif) no-repeat 50% 50%, rgba(0,0,0,0.7);
+    z-index:20;
+}
+
+#tasklist .task input {
+    margin-right:10px;
+}
+
+#tasklist .task {
+    overflow: hidden;
+}
+
+#tasklist .task > * {
+    display: inline-block;
+}

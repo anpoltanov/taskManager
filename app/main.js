@@ -8,9 +8,13 @@ define(function (require) {
     repositoryTask.setProvider('localStorage');
     var tasks = repositoryTask.findAll();
     task.showAll(tasks);
-    $(document).on('submit', '.tasklist.__addNew', function (event) {
+    task.showAddForm();
+    $(document).on('submit', '.tasklist.__addNew', function(event) {
         event.preventDefault();
         repositoryTask.save(task.getFormData(event));
         return false;
+    });
+    $(document).on('click', '#tasklist .task .__delete', function(event) {
+        repositoryTask.remove(task.getFormData(event));
     });
 });
