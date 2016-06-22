@@ -11,14 +11,15 @@ define(function () {
             '<h4 class="list-group-item-heading">' + task.title + '</h4><br />' +
             '<p class="list-group-item-text">' + task.description + '</p>' +
             '<div class="btn btn-danger pull-right __delete">Delete</div>' +
+            '<div class="btn btn-warning pull-right __edit">Edit</div>' +
             '</li>')
                 .data('id', task.id)
                 .addClass("list-group-item task");
-            var checkbox = $('<input type="checkbox" />').addClass('pull-left');
-            if (task.done) {
+            var checkbox = $('<input type="checkbox" class="__done" />').addClass('pull-left');
+            if (task.done == 'true') {
                 checkbox.attr('checked', 'checked');
             }
-            var form = $('<form></form>').addClass('tasklist __edit').hide();
+            var form = $('<form></form>').addClass('tasklist __editTask').hide();
             var formContent = this.getFormContent(task);
             formContent.appendTo(form);
             form.appendTo(content);
@@ -37,7 +38,7 @@ define(function () {
                 '<input type="hidden" name="id" value="' + ('id' in task ? task.id : '') + '" />' +
                 '<input type="hidden" name="done" value="' + ('done' in task ? task.done : '') + '" />' +
                 '<input type="hidden" name="type" value="task" />' +
-                '<input class="btn btn-default" type="submit" value="Добавить" />'
+                '<input class="btn btn-success" type="submit" value="' + ('id' in task ? 'Save' : 'Add') + '" />'
             );
         }
     }
