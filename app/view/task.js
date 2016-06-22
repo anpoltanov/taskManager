@@ -5,8 +5,7 @@ define(function () {
     var options;
 
     return {
-        show: function(task) {
-            var container = $(document).find('#tasklist');
+        getElement: function(task) {
             var content = $('<li>' +
             '<h4 class="list-group-item-heading">' + task.title + '</h4><br />' +
             '<p class="list-group-item-text">' + task.description + '</p>' +
@@ -24,7 +23,7 @@ define(function () {
             formContent.appendTo(form);
             form.appendTo(content);
             checkbox.prependTo(content);
-            content.appendTo(container);
+            return content;
         },
 
         getFormContent: function(task) {

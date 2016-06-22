@@ -18,8 +18,9 @@ define(function (require) {
     });
     $(document).on('submit', '.tasklist.__editTask', function(event) {
         event.preventDefault();
-        repositoryTask.save(task.getFormData(event));
-        task.toggleEditState(event);
+        var entity = task.getFormData(event);
+        repositoryTask.save(entity);
+        task.refresh(event, entity);
         return false;
     });
     $(document).on('click', '#tasklist .task .__delete', function(event) {

@@ -6,7 +6,9 @@ define(["require", "./view/task"], function(require) {
 
     return {
         show: function(task) {
-            view.show(task);
+            var container = $(document).find('#tasklist');
+            var element = view.getElement(task);
+            element.appendTo(container);
         },
 
         showAddForm: function() {
@@ -40,6 +42,16 @@ define(["require", "./view/task"], function(require) {
             return task;
         },
 
+        refresh: function(event, task) {
+            var taskElement = $(event.target).closest('.task');
+            taskElement.replaceWith(view.getElement(task));
+        },
+
+        toggleEditState: function(event) {
+            var taskElement = $(event.target).closest('.task');
+            taskElement.children().toggle();
+        },
+
         getFormData: function(event) {
             var task = {};
             var form = $(event.target).closest('form');
@@ -52,11 +64,6 @@ define(["require", "./view/task"], function(require) {
                 task[item.name] = item.value;
             });
             return task;
-        },
-
-        toggleEditState: function(event) {
-            var taskElement = $(event.target).closest('.task');
-            taskElement.children().toggle();
         }
     };
 });
