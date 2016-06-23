@@ -4,7 +4,11 @@
 requirejs.config({
     baseUrl: 'lib',
     paths: {
-        app: '../app'
+        app: '../app',
+        controller: '../app/controller',
+        model: '../app/model',
+        repository: '../app/repository',
+        view: '../app/view'
     }
 });
 

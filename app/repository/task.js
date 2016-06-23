@@ -1,7 +1,7 @@
 /**
  * Created by Andrey on 22.06.2016.
  */
-define(["require", "storageFactory"], function(require) {
+define(["require", "storageProvider/factory"], function(require) {
     var provider;
 
     return {
@@ -10,7 +10,7 @@ define(["require", "storageFactory"], function(require) {
         },
 
         setProvider: function(providerName) {
-            var factory = require('storageFactory');
+            var factory = require('storageProvider/factory');
             provider = factory.get(providerName);
         },
 

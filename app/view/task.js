@@ -2,7 +2,6 @@
  * Created by Andrey on 22.06.2016.
  */
 define(function () {
-    var options;
 
     return {
         getElement: function(task) {
@@ -12,7 +11,6 @@ define(function () {
             '<div class="btn btn-danger pull-right __delete">Delete</div>' +
             '<div class="btn btn-warning pull-right __edit">Edit</div>' +
             '</li>')
-                .data('id', task.id)
                 .addClass("list-group-item task");
             var checkbox = $('<input type="checkbox" class="__done" />').addClass('pull-left');
             if (task.done == 'true') {
@@ -38,6 +36,65 @@ define(function () {
                 '<input type="hidden" name="done" value="' + ('done' in task ? task.done : '') + '" />' +
                 '<input type="hidden" name="type" value="task" />' +
                 '<input class="btn btn-success" type="submit" value="' + ('id' in task ? 'Save' : 'Add') + '" />'
+            );
+        },
+
+        showElement: function(task) {
+            var container = $(document).find('#tasklist');
+            var element = this.getElement(task);
+            element.appendTo(container);
+        },
+
+        showAll: function(tasks) {
+            var container = $(document).find('#tasklist');
+            container.empty();
+            var self = this;
+            tasks.forEach(function(item, i, arr) {
+                self.showElement(item);
+            });
+        },
+
+        showAddForm: function() {
+            $(document).find('form.tasklist.__addNew').append(this.getFormContent({}));
+        },
+
+        /**
+         * Refreshes task in DOM after edit
+         * @param event
+         * @param task
+         */
+        refreshElement: function(event, task) {
+            var taskElement = $(event.target).closest('.task');
+            taskElement.replaceWith(this.getElement(task));
+        },
+
+        /**
+         * Remove element from DOM
+         * @param event
+         */
+        removeElement: function(event) {
+            $(event.target).closest('.task').remove();
+        },
+
+        /**
+         * View edit form of the element or hide it back
+         * @param event
+         */
+        toggleElementEditState: function(event) {
+            var taskElement = $(event.target).closest('.task');
+            taskElement.children().toggle();
+        },
+
+        /**
+         * Changes value of the corresponding input field in an element form
+         * @param event
+         */
+        toggleElementDoneState: function(event) {
+            $(event.target)
+                .siblings('form')
+                .find('input[name="done"]')
+                .val(
+                $(event.target).prop('checked')
             );
         }
     }
