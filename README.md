@@ -1,5 +1,7 @@
 # taskManager
 
+(Для запуска необходимо скачать проект и открыть в браузере файл index.html)
+
 In this app I tried to combine Module and MVC patterns. 
 
 ToDo web application without server.
